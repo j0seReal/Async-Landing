@@ -12,7 +12,6 @@ const content = null || document.getElementById("content");
 async function fetchData(url_api) {
         const response = await fetch(url_api, options);
         const result = await response.json();
-        console.log(result);
         return result;
 
 }
@@ -27,7 +26,7 @@ const x = fetchData(API);
         <div class="group relative">
             <div
             class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
-                <img src="${video.snipped.thumbnail.high.url}" alt="" class="${video.snippet.description}">
+                <img src="${video.snippet.thumbnails.high.url}" alt="" class="${video.snippet.description}">
             </div>
             <div class="mt-4 flex justify-between">
                 <h3 class="text-sm text-gray-700">
@@ -39,7 +38,8 @@ const x = fetchData(API);
         `).slice(0,4).join('')}
         
         `;
-    } catch {
-        
+        content.innerHTML = view;
+    } catch (error) {
+        console.log(error);
     }
 })();
